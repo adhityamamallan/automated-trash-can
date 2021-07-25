@@ -29,7 +29,6 @@ class Misc(commands.Cog):
         if self.mentions_bot(message):
             await message.reply(content="Bish whet")
 
-
     @commands.command(
         usage='"<question>" "<option1>" "<option2>" (the quotation marks are important)'
     )
@@ -154,10 +153,14 @@ class Misc(commands.Cog):
     @commands.command(usage="<website to hack>")
     async def hack(ctx, website):
         """Use with extreme caution"""
-        return discord.Embed(
-            title="{0} mainframe breached, click here to initiate hack".format(website),
-            url="https://hackertyper.net/",
-            description="You'll need at least 3 VPNs or else your computer will get COVID-20"
+        ctx.send(
+            embed=discord.Embed(
+                title="{0} mainframe breached, click here to initiate hack".format(
+                    website
+                ),
+                url="https://hackertyper.net/",
+                description="You'll need at least 3 VPNs or else your computer will get COVID-20",
+            )
         )
 
     @giveaway.error
