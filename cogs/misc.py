@@ -4,6 +4,7 @@ import random
 import discord
 from discord.ext import commands
 from numpy import base_repr
+from numpy.core.numeric import True_
 
 from utils.configManager import BotConfig, RedditConfig
 from utils import misc, consts
@@ -15,6 +16,20 @@ class Misc(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.bot_config = BotConfig()
+
+    def mentions_bot(self, message):
+        for mention in message.mentions:
+            if mention == self.bot.user:
+                return True
+        return False
+
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if message.author == self.bot.user:
+            return
+        if self.mentions_bot(message):
+            await message.reply(content="Bish whet")
+
 
     @commands.command(
         usage='"<question>" "<option1>" "<option2>" (the quotation marks are important)'
