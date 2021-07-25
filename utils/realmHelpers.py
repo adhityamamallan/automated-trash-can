@@ -56,4 +56,4 @@ def get_realmeye_embed(name, type, link, info):
     for row in info:
         embed.add_field(name=row[0], value=row[1], inline=False)
 
-    return embed
+    return

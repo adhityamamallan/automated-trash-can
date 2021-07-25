@@ -4,6 +4,7 @@ import discord
 from numpy import base_repr
 from utils import consts
 
+
 def uwufy(message):
     message = message.replace("L", "W")
     message = message.replace("R", "W")
@@ -52,12 +53,14 @@ def get_giveaway_props(embed):
     props = embed.title.split(" is giving away ")
     return props[0], props[1]
 
+
 def get_giveaway_embed(user, item):
     return discord.Embed(
         title="{0} is giving away {1}!".format(user, item),
         description="React with {0} to enter!".format(consts.pbag),
         color=discord.Color.from_rgb(230, 0, 0),
     )
+
 
 def get_giveaway_winner_embed(winner, sponsor, prize, msg_id):
     embed = discord.Embed(
@@ -68,8 +71,6 @@ def get_giveaway_winner_embed(winner, sponsor, prize, msg_id):
         color=discord.Color.from_rgb(230, 0, 0),
     )
 
-    embed.set_footer(
-        text="This was giveaway ID {0}".format(base_repr(msg_id, 36))
-    )
+    embed.set_footer(text="This was giveaway ID {0}".format(base_repr(msg_id, 36)))
 
     return embed

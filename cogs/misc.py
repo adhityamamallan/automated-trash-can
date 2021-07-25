@@ -36,7 +36,7 @@ class Misc(commands.Cog):
         await pollmsg.add_reaction("🇧")
 
     @commands.command()
-    async def giveaway(self, ctx, item: str, user: str):
+    async def giveaway(self, ctx, user: str, item: str):
         """Start a giveaway."""
 
         commandmsg = await ctx.channel.fetch_message(ctx.channel.last_message_id)
@@ -103,7 +103,9 @@ class Misc(commands.Cog):
             "{0} has won the giveaway! Congratulations!".format(winner.mention)
         )
 
-        await giveawaymsg.edit(embed=misc.get_giveaway_winner_embed(winner, sponsor, prize, giveawaymsg.id))
+        await giveawaymsg.edit(
+            embed=misc.get_giveaway_winner_embed(winner, sponsor, prize, giveawaymsg.id)
+        )
 
     @commands.command()
     async def tcsa(ctx):
