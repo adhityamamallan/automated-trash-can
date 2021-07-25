@@ -151,6 +151,15 @@ class Misc(commands.Cog):
         """For when someone says something questionable."""
         await ctx.send(misc.hmmstring())
 
+    @commands.command(usage="<website to hack>")
+    async def hack(ctx, website):
+        """Use with extreme caution"""
+        return discord.Embed(
+            title="{0} mainframe breached, click here to initiate hack".format(website),
+            url="https://hackertyper.net/",
+            description="You'll need at least 3 VPNs or else your computer will get COVID-20"
+        )
+
     @giveaway.error
     async def giveawayError(self, ctx, error):
         """

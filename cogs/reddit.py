@@ -120,7 +120,7 @@ class Reddit(commands.Cog):
     async def copypasta(self, ctx):
         """To be fair, you have to have a very high IQ to use this command."""
         subreddit = await self.reddit_instance.subreddit("copypasta")
-        post = await get_subpost(subreddit.hot(limit=40), ctx.channel.is_nsfw())
+        post = await get_subpost(subreddit.hot(limit=40), not ctx.channel.is_nsfw())
         await ctx.send("**{0}**".format(post.title))
         await ctx.send(post.selftext)
 
