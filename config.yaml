@@ -5,7 +5,6 @@ Bot:
   CogDirectory: cogs
   Cogs:
     - anagrams
-    - garlic
     - pokemon
     - reddit
     - misc
@@ -23,11 +22,6 @@ Anagram:
   TimeToSecondHintShortWords: 13
   ShortWordLengthCutoff: 7
   WordsAPI: http://api.datamuse.com/words?sp={word}&qe=sp&md=dp&max=1
-
-Garlic:
-  Template: resources/garlic/Template.jpeg
-  DarkTemplate: resources/garlic/DarkTemplate.png
-  Font: resources/garlic/CooperHewitt-Heavy.otf
 
 Reddit:
   UserAgent: discord:bubot:1.0.0 (by /u/alexaplaymiamidisco)

@@ -87,23 +87,6 @@ class AnagramConfig(Config):
         return self.get_property("WordsAPI")
 
 
-class GarlicConfig(Config):
-    def __init__(self):
-        Config.__init__(self, "Garlic")
-
-    @property
-    def template(self):
-        return self.get_property("Template")
-
-    @property
-    def darkTemplate(self):
-        return self.get_property("DarkTemplate")
-
-    @property
-    def font(self):
-        return self.get_property("Font")
-
-
 class RedditConfig(Config):
     def __init__(self):
         Config.__init__(self, "Reddit")
