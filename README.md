@@ -1,10 +1,17 @@
-# Wing Bot
+# Automated Trash Can
 
-A Discord bot to play games, get xkcd updates, browse reddit, and more!
+A Discord bot that does a few things, including:
+- Random games
+- Pulling posts from Reddit
+- Coming up with bullshit
+- Making polls
+- Generally being a nuisance in chat
+
+Credits to [naveen-u](https://github.com/naveen-u) and his [WingBot](https://github.com/naveen-u/WingBot) for letting me steal most of his work.
 
 ## Development
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+If you want to run a copy of this bot locally, this is what you'll need to set up.
 
 ### Prerequisites
 
@@ -28,17 +35,11 @@ pip install -r requirements.txt
 DISCORD_TOKEN=<your discord token>
 REDDIT_CLIENT_ID=<your reddit app's client ID>
 REDDIT_SECRET=<your reddit app's client secret>
-MONGODB_CONNECTION_STRING=<your mongodb connection string>
 ```
 
 ### Deployment
 
-Run `python wingbot.py` from the root directory.
-
-## Authors
-
-- **Naveen Unnikrishnan** - _Xkcd, anagrams, pokemon, bullshit, and more_ - [naveen-u](https://github.com/naveen-u)
-- **Adhitya Mamallan** - _Reddit and polls_ - [adhityamamallan](https://github.com/adhityamamallan)
+Run `python bot.py` from the root directory.
 
 ## License
 
