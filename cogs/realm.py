@@ -70,11 +70,11 @@ class Realm(commands.Cog):
 
     @commands.command(usage="<dungeon name>", aliases=["afkcheck"])
     async def afk(self, ctx, *args):
+        """Start an AFK check."""
 
         commandmsg = await ctx.channel.fetch_message(ctx.channel.last_message_id)
         await commandmsg.delete()
 
-        """Start an AFK check."""
         if len(args) > 0:
             dungeon = " ".join(args)
         else:

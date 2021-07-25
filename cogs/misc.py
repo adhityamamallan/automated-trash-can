@@ -4,7 +4,6 @@ import random
 import discord
 from discord.ext import commands
 from numpy import base_repr
-from numpy.core.numeric import True_
 
 from utils.configManager import BotConfig, RedditConfig
 from utils import misc, consts
