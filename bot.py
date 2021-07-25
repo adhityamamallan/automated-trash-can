@@ -16,6 +16,7 @@ bot = commands.Bot(command_prefix=config.commandPrefix, case_insensitive=True)
 
 bot.config = config
 
+
 async def signal_handler():
     """
     Signal handler to perform required cleanup operations before quitting bot

@@ -4,11 +4,12 @@ Bot:
   Activity: "?help for help"
   CogDirectory: cogs
   Cogs:
-    - anagrams
-    - pokemon
     - reddit
+    - realm
     - misc
     - bullshit
+    - anagrams
+    - pokemon
 
 Anagram:
   Corpus: resources/anagrams/wordList.txt

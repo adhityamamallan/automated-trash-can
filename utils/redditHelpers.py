@@ -3,6 +3,7 @@ from re import sub
 
 import discord
 
+
 def credit_embed(post):
     embed = discord.Embed(
         title=post.title,
@@ -10,6 +11,7 @@ def credit_embed(post):
         url="https://www.reddit.com" + post.permalink,
     )
     return embed
+
 
 async def get_subpost(sublist, is_sfw):
     posts = []
@@ -19,5 +21,10 @@ async def get_subpost(sublist, is_sfw):
     post = random.choice(posts)
     return post
 
+
 def is_submission_valid(submission, is_sfw):
-    return not submission.stickied and len(submission.selftext) < 2000 and not (is_sfw and submission.over_18) 
+    return (
+        not submission.stickied
+        and len(submission.selftext) < 2000
+        and not (is_sfw and submission.over_18)
+    )
