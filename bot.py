@@ -1,0 +1,60 @@
+import asyncio
+import inspect
+import os
+import signal
+
+import discord
+from discord.ext import commands
+from dotenv import load_dotenv
+from utils.configManager import BotConfig
+from utils.help import HelpCommand
+
+load_dotenv()
+TOKEN = os.getenv("DISCORD_TOKEN")
+config = BotConfig()
+bot = commands.Bot(command_prefix=config.commandPrefix, case_insensitive=True)
+
+bot.config = config
+
+async def signal_handler():
+    """
+    Signal handler to perform required cleanup operations before quitting bot
+    """
+    print("Cleaning up the mess...")
+    for item in config.cogs:
+        cog = bot.get_cog(item.capitalize())
+        print(f"Executing signal handlers of the {item} cog...")
+        if hasattr(cog, "signal_handler"):
+            if inspect.iscoroutinefunction(cog.signal_handler):
+                await cog.signal_handler()
+            else:
+                cog.signal_handler()
+    await bot.close()
+
+
+@bot.event
+async def on_ready():
+    """
+    Finish set up once bot is ready
+    """
+    print("Hello there, {0.user} reporting".format(bot))
+    await bot.change_presence(activity=discord.Game(name=config.activity))
+    cogs = config.cogs
+    cog_directory = config.cogDirectory
+    for cog in cogs:
+        try:
+            bot.load_extension(cog_directory + "." + cog)
+        except commands.errors.ExtensionAlreadyLoaded:
+            pass
+    loop = asyncio.get_event_loop()
+    for signame in ("SIGINT", "SIGTERM"):
+        loop.add_signal_handler(
+            getattr(signal, signame), lambda: asyncio.ensure_future(signal_handler())
+        )
+    return
+
+
+# Adding custom help command
+helpCommand = HelpCommand()
+bot.help_command = helpCommand
+bot.run(TOKEN)
