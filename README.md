@@ -4,7 +4,8 @@ A Discord bot that does a few things, including:
 - Random games
 - Pulling posts from Reddit
 - Coming up with bullshit
-- Making polls and generally being a nuisance in chat
+- Making polls
+- Generally being a nuisance in chat
 
 Credits to [naveen-u](https://github.com/naveen-u) and his [WingBot](https://github.com/naveen-u/WingBot) for letting me steal most of his work.
 
