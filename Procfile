@@ -1,1 +1,1 @@
-worker: python wingbot.py
+worker: python bot.py
