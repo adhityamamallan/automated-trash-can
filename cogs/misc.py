@@ -6,7 +6,7 @@ from discord.ext import commands
 from numpy import base_repr
 
 from utils.configManager import BotConfig, RedditConfig
-from utils import misc, consts
+from utils import miscHelpers, consts
 
 
 class Misc(commands.Cog):
@@ -66,7 +66,7 @@ class Misc(commands.Cog):
             await errmsg.delete()
             return
 
-        giveawaymsg = await ctx.send(embed=misc.get_giveaway_embed(user, item))
+        giveawaymsg = await ctx.send(embed=miscHelpers.get_giveaway_embed(user, item))
 
         await giveawaymsg.add_reaction(consts.pbag)
 
@@ -102,7 +102,7 @@ class Misc(commands.Cog):
 
         users = await giveawaymsg.reactions[0].users().flatten()
 
-        sponsor, prize = misc.get_giveaway_props(giveawaymsg.embeds[0])
+        sponsor, prize = miscHelpers.get_giveaway_props(giveawaymsg.embeds[0])
 
         users.remove(self.bot.user)
         try:
@@ -117,11 +117,11 @@ class Misc(commands.Cog):
         )
 
         await giveawaymsg.edit(
-            embed=misc.get_giveaway_winner_embed(winner, sponsor, prize, giveawaymsg.id)
+            embed=miscHelpers.get_giveaway_winner_embed(winner, sponsor, prize, giveawaymsg.id)
         )
 
     @commands.command()
-    async def tcsa(ctx):
+    async def tcsa(self, ctx):
         """For when someone falls for one of the classic blunders."""
         embed = discord.Embed(
             title="You fell for it, fool!", description="Thunder Cross Split Attack!"
@@ -132,7 +132,7 @@ class Misc(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def uwu(ctx, *args):
+    async def uwu(self, ctx, *args):
         """Kawaii desu ne senpai uwu .｡･ﾟﾟ･(＞_＜)･ﾟﾟ･｡."""
         if len(args) > 0:
             msgcontent = " ".join(args)
@@ -143,17 +143,20 @@ class Misc(commands.Cog):
                     msglist.append(message.content)
             print(msglist)
             msgcontent = msglist[0]
-        await ctx.send(misc.uwufy(msgcontent))
+        await ctx.send(miscHelpers.uwufy(msgcontent))
 
     @commands.command()
-    async def hmm(ctx):
+    async def hmm(self, ctx):
         """For when someone says something questionable."""
-        await ctx.send(misc.hmmstring())
+        await ctx.send(miscHelpers.hmmstring())
 
     @commands.command(usage="<website to hack>")
-    async def hack(ctx, website):
+    async def hack(self, ctx, *args):
         """Use with extreme caution"""
-        ctx.send(
+        website = "Website"
+        if len(args) > 0:
+            website = " ".join(args)
+        await ctx.send(
             embed=discord.Embed(
                 title="{0} mainframe breached, click here to initiate hack".format(
                     website
