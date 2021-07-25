@@ -10,7 +10,7 @@ class HelpCommand(commands.HelpCommand):
 
     async def send_bot_help(self, mapping):
         helpMessage = discord.Embed(
-            title="WingBot Help\t|\tModules", color=discord.Color.dark_blue()
+            title="Trashcan Help\t|\tModules", color=discord.Color.dark_blue()
         )
         for i in mapping.keys():
             if i is None:
@@ -33,7 +33,7 @@ class HelpCommand(commands.HelpCommand):
                 )
                 l.append(i)
         helpMessage = discord.Embed(
-            title=f"WingBot Help\t|\t{cog.qualified_name}",
+            title=f"Trashcan Help\t|\t{cog.qualified_name}",
             color=discord.Color.dark_blue(),
         )
         helpMessage.add_field(name="Description", value=cog.description)
@@ -53,7 +53,7 @@ class HelpCommand(commands.HelpCommand):
                 )
                 l.append(i)
         helpMessage = discord.Embed(
-            title=f"WingBot Help\t|\t`{self.botConfig.commandPrefix}{group.qualified_name}`",
+            title=f"Trashcan Help\t|\t`{self.botConfig.commandPrefix}{group.qualified_name}`",
             color=discord.Color.dark_blue(),
         )
         helpMessage.add_field(name="Description", value=group.short_doc)
@@ -65,7 +65,7 @@ class HelpCommand(commands.HelpCommand):
 
     async def send_command_help(self, command):
         helpMessage = discord.Embed(
-            title=f"WingBot Help\t|\t`{self.botConfig.commandPrefix}{command.qualified_name}`",
+            title=f"Trashcan Help\t|\t`{self.botConfig.commandPrefix}{command.qualified_name}`",
             color=discord.Color.dark_blue(),
         )
         helpMessage.add_field(name="Description", value=command.help)
